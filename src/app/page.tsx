@@ -33,7 +33,7 @@ export default async function Home() {
       </nav>
 
       <main className="py-6">
-       <TodosContainer signedInUserId={session.user.id} />
+       <TodosContainer />
       </main>
     </div>
   )

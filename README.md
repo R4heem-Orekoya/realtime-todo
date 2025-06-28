@@ -48,7 +48,7 @@ A realtime todo application built with a modern stack:
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/R4heem-Orekoya/realtime-todo
+git clone https://github.com/R4heem-Orekoya/realtime-todo.git
 
 cd realtime-todo-app
 ```

@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query"
 import { HTTPException } from "hono/http-exception"
 import { PropsWithChildren, useState } from "react"
+import { toast } from "sonner"
 
 export const QueryClientProviderWrapper = ({ children }: PropsWithChildren) => {
   const [queryClient] = useState(
@@ -13,10 +14,18 @@ export const QueryClientProviderWrapper = ({ children }: PropsWithChildren) => {
         queryCache: new QueryCache({
           onError: (err) => {
             if (err instanceof HTTPException) {
-              // global error handling, e.g. toast notification ...
+              toast.error(err.message)
             }
           },
         }),
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: true,
+            refetchOnReconnect: true,
+            refetchIntervalInBackground: true,
+            refetchInterval: 1000 * 60,
+          },
+        },
       })
   )
 
